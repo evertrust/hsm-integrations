@@ -1,0 +1,5 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+ARG PRIMUS_PKCS11_LIB="libprimusP11.so.2.1.3"
+
+COPY ${PRIMUS_PKCS11_LIB} /usr/local/primus/

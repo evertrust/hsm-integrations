@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  repository_dispatch:
+    types: [build_hsm_images]
+  workflow_dispatch:
+    inputs:
+      baseImage:
+        description: Base image
+        required: true
+jobs:
+  build:
+    runs-on: ${{ vars.RUNS_ON }}
+    env:
+      REGISTRY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oras-project/setup-oras@v1
+      - uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ env.REGISTRY_USERNAME }}
+          password: ${{ env.REGISTRY_PASSWORD }}
+      - run: make build BASE_IMAGE=${{ github.event.client_payload.baseImage || github.event.inputs.baseImage }}
