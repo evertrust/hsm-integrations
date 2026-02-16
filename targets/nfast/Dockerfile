@@ -8,7 +8,7 @@ COPY ${NFAST_CLIENT_FILE} /tmp/secworld.iso
 RUN mkdir /tmp/secworld && mkdir /tmp/ctls
 RUN 7z x -y /tmp/secworld.iso -o/tmp/secworld
 RUN 7z x -y /tmp/secworld/linux/amd64/ctls.tar.gz -o/tmp/ctls
-RUN 7z x -y /tmp/ctls/ctls.tar -o/tmp/ctls
+RUN tar -C /tmp/ctls -xf /tmp/ctls/ctls.tar
 
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
