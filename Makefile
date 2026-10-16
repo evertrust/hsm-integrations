@@ -1,4 +1,4 @@
-REGISTRY_HOST ?= harbor.infra.evertrust.io
+REGISTRY_URL ?= harbor.infra.evertrust.io/platform
 
 .PHONY: fetch-dependencies build cleanup-dependencies list-targets
 
@@ -15,7 +15,7 @@ fetch-dependencies: ## Fetch third-party dependencies
 		echo "Pulling dependencies for $$target"; \
 		pushd targets/$$target; \
 		while read dep; do \
-			oras pull "$(REGISTRY_HOST)/$${dep#*/}"; \
+			oras pull "$(REGISTRY_URL)/$${dep##*/}"; \
 		done < dependencies.txt; \
 		popd; \
 	fi; \
