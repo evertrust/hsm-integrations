@@ -1,1 +1,1 @@
-quay.io/evertrust/artifacts:610-000401-012_SW_Linux_Luna_Minimal_Client_V10.7.2_RevA.tar
+harbor.infra.evertrust.io/platform/artifacts:610-000401-012_SW_Linux_Luna_Minimal_Client_V10.7.2_RevA.tar
