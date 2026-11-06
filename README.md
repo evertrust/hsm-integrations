@@ -7,10 +7,10 @@ This repository stores Dockerfiles to build containers with third-party HSMs mid
 Images are built using the `make` command. To build all images, run:
 
 ```
-make build BASE_IMAGE=quay.io/evertrust/stream:2.0.0
+make build BASE_IMAGE=harbor.infra.evertrust.io/library/stream:2.0.0
 ```
 
-Images will extend the `BASE_IMAGE` and push a new image whose tag is the base image tag, suffixed by the name of the third-party target (such as `quay.io/evertrust/stream:2.0.0-luna`).
+Images will extend the `BASE_IMAGE` and push a new image whose tag is the base image tag, suffixed by the name of the third-party target (such as `harbor.infra.evertrust.io/library/stream:2.0.0-luna`).
 
 By default, the build system fetches third-party dependencies from EVERTRUST internal CDN. To build images using local dependencies instead:
 
@@ -19,13 +19,13 @@ By default, the build system fetches third-party dependencies from EVERTRUST int
 2. **Skip dependency fetching**: Use the `SKIP_DEPENDENCIES=1` flag to prevent automatic dependency downloads:
 
 ```bash
-make build BASE_IMAGE=quay.io/evertrust/stream:2.1.0 TARGETS=luna SKIP_DEPENDENCIES=1
+make build BASE_IMAGE=harbor.infra.evertrust.io/library/stream:2.1.0 TARGETS=luna SKIP_DEPENDENCIES=1
 ```
 
 3. Additionally, you might want to modify the input arguments specified in each target README:
 
 ```bash
-make build BASE_IMAGE=quay.io/evertrust/stream:2.1.0 TARGETS=luna SKIP_DEPENDENCIES=1 LUNA_CLIENT_FILE=alternative.tar
+make build BASE_IMAGE=harbor.infra.evertrust.io/library/stream:2.1.0 TARGETS=luna SKIP_DEPENDENCIES=1 LUNA_CLIENT_FILE=alternative.tar
 ```
 
 ## Creating a new image

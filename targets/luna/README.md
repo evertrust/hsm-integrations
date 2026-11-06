@@ -19,7 +19,7 @@ The PKCS#11 interface is located at `/opt/luna/libs/64/libCryptoki2.so`.
 version: "3.8"
 services:
   app:
-    image: quay.io/evertrust/app:version-luna
+    image: harbor.infra.evertrust.io/library/app:version-luna
     container_name: app-luna
     environment:
       - LUNA_CONFIG_FILE=/opt/luna/config/Chrystoki.conf
